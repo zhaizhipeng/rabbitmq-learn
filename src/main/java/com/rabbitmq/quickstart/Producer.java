@@ -1,4 +1,4 @@
-package com.raabbitmq.quickstart;
+package com.rabbitmq.quickstart;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

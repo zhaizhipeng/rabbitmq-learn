@@ -1,4 +1,4 @@
-package com.rabbit.topic;
+package com.rabbitmq.exchange.fanout;
 
 import com.rabbitmq.client.*;
 
@@ -19,10 +19,9 @@ public class Consumer {
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();
 
-        String exchangeName = "test_topic_exchange";
-        String exchangeType = "topic";
-        String queueName = "test_topic_queue";
-        String routingKey = "test.topic.#";
+        String exchangeName = "test_fanout_exchange";
+        String exchangeType = "fanout";
+        String queueName = "test_fanout_queue";
 
         // 声明了一个交换机
         channel.exchangeDeclare(exchangeName, exchangeType,true,false,false,null);
@@ -31,7 +30,7 @@ public class Consumer {
         channel.queueDeclare(queueName,true,false,false,null);
 
         // 建立一个绑定关系
-        channel.queueBind(queueName, exchangeName, routingKey);
+        channel.queueBind(queueName, exchangeName, "");
 
         channel.basicConsume(queueName, true, new DefaultConsumer(channel) {
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {

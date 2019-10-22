@@ -1,4 +1,4 @@
-package com.rabbitmq.direct;
+package com.rabbitmq.exchange.fanout;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -15,9 +15,9 @@ public class Producer {
 
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();
-        String exchangeName = "test_direct_exchange";
-        String routingKey = "test.direct";
-        String msg = "Hello World RabbitMQ Direct Exchange Message";
+        String exchangeName = "test_fanout_exchange";
+        String routingKey = "test.fanout";
+        String msg = "Hello World RabbitMQ Fanout Exchange Message";
 
         channel.basicPublish(exchangeName, routingKey, null, msg.getBytes());
 

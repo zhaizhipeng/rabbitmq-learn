@@ -1,4 +1,4 @@
-package com.rabbitmq.direct;
+package com.rabbitmq.exchange.direct;
 
 import com.rabbitmq.client.*;
 import java.io.IOException;
