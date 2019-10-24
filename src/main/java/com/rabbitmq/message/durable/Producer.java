@@ -15,8 +15,8 @@ public class Producer {
         String exchangeName = "test_durable_exchange";
         String routingKey = "test.durable";
 
-        for (int i = 0; i < 5000; i++){
-            String msg = "Hello World RabbitMQ Send Ack Message" + i;
+        for (int i = 0; i < 50000; i++){
+            String msg = "Hello World RabbitMQ Send Durable Message" + i;
             channel.basicPublish(exchangeName, routingKey, true, MessageProperties.PERSISTENT_TEXT_PLAIN, msg.getBytes());
         }
 
